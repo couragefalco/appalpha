@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for courageextractseven on 2023-06-29T00:04:59+02:00
+# fly.toml app configuration file generated for courageextractseven on 2023-06-29T00:11:46+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -7,7 +7,11 @@ app = "courageextractseven"
 primary_region = "fra"
 
 [build]
-  builder = "Dockerfile"
+  builder = "paketobuildpacks/builder:base"
+
+[[build.buildpacks]]
+  uri = "https://github.com/paketo-buildpacks/python"
+  version = "3.9.12"
 
 [env]
   PORT = "8080"
