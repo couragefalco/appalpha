@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for courageextractionten on 2023-06-29T00:59:50+02:00
+# fly.toml app configuration file generated for courageextracteleven on 2023-06-29T01:07:33+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "courageextractionten"
+app = "courageextracteleven"
 primary_region = "fra"
 
 [build]

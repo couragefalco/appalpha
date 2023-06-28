@@ -2,15 +2,12 @@ import os
 import streamlit as st
 import cadquery as cq
 
-#Testing
-
 ALLOWED_EXTENSIONS = {'step', 'stp', 'iges'}
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def get_bounding_box_dimensions(shape):
-    print(type(shape))  # Add this line to check the type of the shape variable
     bb = shape.val().BoundingBox()
     dimensions = (bb.xmax - bb.xmin, bb.ymax - bb.ymin, bb.zmax - bb.zmin)
     return dimensions
@@ -34,6 +31,13 @@ def display_detailed_measurements(shape):
         length = edge.Length()
         st.write(f"Edge {i}: {length}")
 
+def load_cad_model(file_path, ext):
+    return (
+        cq.importers.importStep(file_path)
+        if ext in ["step", "stp"]
+        else cq.importers.importShape(file_path, file_ext)
+    )
+
 def main():
     st.title("Upload CAD File")
     uploaded_file = st.file_uploader(
@@ -43,22 +47,16 @@ def main():
     )
 
     if uploaded_file is not None:
-        file_ext = uploaded_file.name.rsplit(".", 1)[1].lower()
-        file_content = uploaded_file.read()
-        input_path = f'temporary.{file_ext}'
-        with open(input_path, "wb") as f:
-            f.write(file_content)
-
-        loaded_model = (
-            cq.importers.importStep(input_path)
-            if file_ext in ["step", "stp"]
-            else cq.importers.importers.importShape(input_path, file_ext)
-        )
-        shape = loaded_model
-        dimensions = get_bounding_box_dimensions(shape)
+        ext = uploaded_file.name.split(".", 1)[1].lower()
+        filename = f"temp.{ext}"
+        with open(filename, "wb") as f:
+            f.write(uploaded_file.getvalue())
+        
+        model = load_cad_model(filename, ext)
+        dimensions = get_bounding_box_dimensions(model)
 
         display_measurements(dimensions)
-        display_detailed_measurements(shape)
+        display_detailed_measurements(model)
 
 if __name__ == "__main__":
     main()
