@@ -1,18 +1,17 @@
-# fly.toml app configuration file generated for courageextracteight on 2023-06-29T00:24:37+02:00
+# fly.toml app configuration file generated for fragrant-shadow-8181 on 2023-06-29T00:39:45+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "courageextracteight"
+app = "fragrant-shadow-8181"
 primary_region = "fra"
 
 [build]
-  builder = "paketobuildpacks/builder:base"
+  builtin = "python"
 
-[[build.buildpacks]]
-  id = "paketo-buildpacks/python"
-  version = "3.9.10"
-
+[build.settings]
+  pythonbase = "3.9-slim-buster"
+  
 [env]
   PORT = "8080"
 
@@ -22,6 +21,3 @@ primary_region = "fra"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
-
-[requires]
-python_version = "3.9.12"
