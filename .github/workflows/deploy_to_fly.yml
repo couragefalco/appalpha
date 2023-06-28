@@ -23,4 +23,4 @@ jobs:
         with:
           args: "deploy"
         env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          FLY_API_TOKEN: "fo1_poII4qfmTsdMch05rQtL41vSnFgxabzi540hMdnU9Wc"
