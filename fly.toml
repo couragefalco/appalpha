@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for courageextractnine on 2023-06-29T00:55:07+02:00
+# fly.toml app configuration file generated for courageextractionten on 2023-06-29T00:59:50+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "courageextractnine"
+app = "courageextractionten"
 primary_region = "fra"
 
 [build]
   builtin = "python"
   [build.settings]
-    pythonbase = "3.9.12"
+    pythonbase = "3.9.12-slim"
 
 [env]
   PORT = "8080"
