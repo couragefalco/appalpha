@@ -1,17 +1,16 @@
-# fly.toml app configuration file generated for fragrant-shadow-8181 on 2023-06-29T00:39:45+02:00
+# fly.toml app configuration file generated for courageextractnine on 2023-06-29T00:48:49+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "fragrant-shadow-8181"
+app = "courageextractnine"
 primary_region = "fra"
 
 [build]
   builtin = "python"
+  [build.settings]
+    pythonbase = "3.9-slim-buster"
 
-[build.settings]
-  pythonbase = "3.9-slim-buster"
-  
 [env]
   PORT = "8080"
 
