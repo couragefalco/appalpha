@@ -10,8 +10,8 @@ primary_region = "fra"
   builder = "paketobuildpacks/builder:base"
 
 [[build.buildpacks]]
-  uri = "https://github.com/paketo-buildpacks/python"
-  version = "3.9.12"
+  id = "paketo-buildpacks/python"
+  version = "3.9.10"
 
 [env]
   PORT = "8080"
