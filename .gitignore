@@ -1,0 +1,10 @@
+# .gitignore
+__pycache__/
+*.py[cod]
+*$py.class
+
+# If you are using Jupyter notebook
+.ipynb_checkpoints
+
+# The folder for virtual environment
+venv/
